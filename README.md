@@ -4,7 +4,7 @@ This function loads a previously trained machine learning model (in this particu
 
 The Azure ML Service supports deployment of registered models to a variety of target compute platforms, but at this point in time Azure Functions is not one of them. It is fairly easy though training a model, exporting it using joblib (I am using here joblib instead of pickle because it tends to work better for sklearn models), and package it next to the function.
 
-The source code of this function includes an irismodel.pkl file that contains a model previously trained with the iris dataset.
+The source code of this function includes an `irismodel.pkl` file that contains a model previously trained with the iris dataset.
 
 ## Quick Deploy to Azure
 
@@ -12,13 +12,13 @@ The source code of this function includes an irismodel.pkl file that contains a 
 
 ## Configuration
 
-Please follow these steps:
+Please follow these steps depending on whether you want a hello world experience or using it with your own model:
 
-### To use the provided model
+### Option 1. To use the provided model (easiest)
 
 * Deploy this function, and score it sending for example this JSON payload (one example of each class is provided here, so the prediction result should look like `[0, 1, 2]`):
 
-```
+```json
 {
 	"data": [
 		[ "5.1", "3.5", "1.4", "0.2" ],
@@ -30,7 +30,7 @@ Please follow these steps:
 
 The answer should look like this:
 
-```
+```json
 {
   "operation_result": "success",
   "data": "[['5.1', '3.5', '1.4', '0.2'], ['7.0', '3.2', '4.7', '1.4'], ['6.3', '3.3', '6.0', '2.5']]",
@@ -38,7 +38,7 @@ The answer should look like this:
 }
 ```
 
-### Change to use with your own model
+### Option 2. Change to use with your own model (harder)
 
 If you decide to move over the hello world stage, you might want to follow these steps to deploy with your own model:
 

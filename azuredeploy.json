@@ -57,7 +57,7 @@
             "dependsOn": []
         },
         {
-            "comment": "Function App",
+            "comments": "Function App",
             "apiVersion": "2016-03-01",
             "type": "Microsoft.Web/sites",
             "name": "[variables('functionAppName')]",
