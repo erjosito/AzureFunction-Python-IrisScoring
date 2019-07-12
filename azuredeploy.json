@@ -37,7 +37,11 @@
         },
         {
             "comments": "Service Plan",
+            "name": "[variables('hostingPlanName')]",
             "type": "Microsoft.Web/serverfarms",
+            "kind": "functionapp",
+            "apiVersion": "2016-09-01",
+            "location": "[resourceGroup().location]",
             "sku": {
                 "name": "Y1",
                 "tier": "Dynamic",
@@ -45,10 +49,6 @@
                 "family": "Y",
                 "capacity": 0
             },
-            "kind": "functionapp",
-            "name": "[variables('hostingPlanName')]",
-            "apiVersion": "2016-09-01",
-            "location": "[resourceGroup().location]",
             "properties": {
                 "name": "[variables('hostingPlanName')]",
                 "perSiteScaling": false,
@@ -58,11 +58,11 @@
         },
         {
             "comments": "Function App",
-            "apiVersion": "2016-03-01",
-            "type": "Microsoft.Web/sites",
             "name": "[variables('functionAppName')]",
+            "apiVersion": "2016-08-01",
+            "type": "Microsoft.Web/sites",
+            "kind": "functionapp,linux",
             "location": "[resourceGroup().location]",
-            "kind": "functionapp",
             "identity": {
                 "type": "SystemAssigned"
             },
