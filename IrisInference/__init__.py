@@ -34,8 +34,7 @@ def predict(model, raw_data):
         return result.tolist()
     except Exception as e:
         logging.error('Error when trying to load model')
-        result = str(e)
-        return result
+        return str(e)
 
 def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info('Python HTTP trigger function processed a request.')
