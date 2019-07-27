@@ -10,12 +10,15 @@
         }
     },
     "variables": {
+        "storageApiVersion": "2019-04-01",
+        "serviceplanApiVersion": "2016-09-01",
+        "functionApiVersion": "2016-08-01",
         "functionAppName": "[parameters('appName')]",
         "hostingPlanName": "[concat(parameters('appName'), '-plan')]",
         "applicationInsightsName": "[parameters('appName')]",
         "repoURL": "https://github.com/erjosito/AzureFunction-Python-IrisScoring.git",
         "branch": "master",
-        "storageAccountName": "[concat('storage', uniquestring(resourceGroup().id))]",
+        "storageAccountName": "[uniqueString(resourceGroup().id)]",
         "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
         "contentShareName": "[toLower(parameters('appName'))]"
     },
@@ -24,23 +27,21 @@
             "comments": "Storage Account",
             "type": "Microsoft.Storage/storageAccounts",
             "name": "[variables('storageAccountName')]",
-            "apiVersion": "2018-07-01",
-            "kind": "StorageV2",
+            "apiVersion": "[variables('storageApiVersion')]",
+            "kind": "Storage",
             "location": "[resourceGroup().location]",
             "sku": {
                 "name": "Standard_LRS",
                 "tier": "Standard"
             },
-            "properties": {
-                "accessTier": "Hot"
-            }
+            "properties": {}
         },
         {
             "comments": "Service Plan",
             "name": "[variables('hostingPlanName')]",
             "type": "Microsoft.Web/serverfarms",
             "kind": "functionapp",
-            "apiVersion": "2016-09-01",
+            "apiVersion": "[variables('serviceplanApiVersion')]",
             "location": "[resourceGroup().location]",
             "sku": {
                 "name": "Y1",
@@ -52,14 +53,16 @@
             "properties": {
                 "name": "[variables('hostingPlanName')]",
                 "perSiteScaling": false,
-                "reserved": true
+                "reserved": true,
+                "targetWorkerCount": 0,
+                "targetWorkerSizeId": 0
             },
             "dependsOn": []
         },
         {
             "comments": "Function App",
             "name": "[variables('functionAppName')]",
-            "apiVersion": "2016-08-01",
+            "apiVersion": "[variables('functionApiVersion')]",
             "type": "Microsoft.Web/sites",
             "kind": "functionapp,linux",
             "location": "[resourceGroup().location]",
@@ -69,7 +72,7 @@
             "properties": {
                 "name": "[variables('functionAppName')]",
                 "clientAffinityEnabled": false,
-                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]",
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]",
                 "siteConfig": {
                     "appSettings": [
                         {
@@ -100,7 +103,7 @@
             },
             "dependsOn": [
                 "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
-                "[resourceId('Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
+                "[resourceId('Microsoft.Web/serverfarms', variables('hostingPlanName'))]"
             ],
             "resources": [
                 {

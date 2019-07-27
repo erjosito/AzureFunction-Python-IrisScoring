@@ -6,7 +6,7 @@ The Azure ML Service supports deployment of registered models to a variety of ta
 
 The source code of this function includes an `irismodel.pkl` file that contains a model previously trained with the iris dataset.
 
-## Quick Deploy to Azure
+## Quick Deploy to Azure (not working yet)
 
 [![Deploy to Azure](http://azuredeploy.net/deploybutton.svg)](https://azuredeploy.net/)
 

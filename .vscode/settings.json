@@ -5,5 +5,5 @@
   "azureFunctions.projectRuntime": "~2",
   "debug.internalConsoleOptions": "neverOpen",
   "azureFunctions.preDeployTask": "func: pack --build-native-deps",
-  "python.pythonPath": ".env\\Scripts\\python.exe"
+  "python.pythonPath": "C:\\Users\\jomore\\AppData\\Local\\Continuum\\anaconda3\\envs\\generic\\python.exe"
 }
