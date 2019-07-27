@@ -11,7 +11,7 @@ The source code of this function includes an `irismodel.pkl` file that contains 
 You can deploy Azure Functions in multiple ways, here what I would consider to be the simplest
 
 1. Fork and clone this repo to your computer
-2. Open with with Visual Studio (make sure you fulfill [these prerequisites](https://docs.microsoft.com/en-us/azure/azure-functions/tutorial-vs-code-serverless-python#prerequisites)})
+2. Open with with Visual Studio (make sure you fulfill [these prerequisites](https://docs.microsoft.com/en-us/azure/azure-functions/tutorial-vs-code-serverless-python#prerequisites))
 3. Deploy using [these instructions](https://docs.microsoft.com/en-us/azure/azure-functions/tutorial-vs-code-serverless-python#deploy-to-azure-functions)
 
 ## Configuration
@@ -24,11 +24,11 @@ Please follow these steps depending on whether you want a hello world experience
 
 ```json
 {
-	"data": [
-		[ "5.1", "3.5", "1.4", "0.2" ],
-		["7.0", "3.2", "4.7", "1.4"],
-		["6.3", "3.3", "6.0", "2.5"]
-	]
+  "data": [
+    [ "5.1", "3.5", "1.4", "0.2" ],
+    ["7.0", "3.2", "4.7", "1.4"],
+    ["6.3", "3.3", "6.0", "2.5"]
+  ]
 }
 ```
 
