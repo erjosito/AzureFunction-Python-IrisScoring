@@ -6,9 +6,13 @@ The Azure ML Service supports deployment of registered models to a variety of ta
 
 The source code of this function includes an `irismodel.pkl` file that contains a model previously trained with the iris dataset.
 
-## Quick Deploy to Azure (not working yet)
+## Deplo to Azure
 
-[![Deploy to Azure](http://azuredeploy.net/deploybutton.svg)](https://azuredeploy.net/)
+You can deploy Azure Functions in multiple ways, here what I would consider to be the simplest
+
+1. Fork and clone this repo to your computer
+2. Open with with Visual Studio (make sure you fulfill [these prerequisites](https://docs.microsoft.com/en-us/azure/azure-functions/tutorial-vs-code-serverless-python#prerequisites)})
+3. Deploy using [these instructions](https://docs.microsoft.com/en-us/azure/azure-functions/tutorial-vs-code-serverless-python#deploy-to-azure-functions)
 
 ## Configuration
 
